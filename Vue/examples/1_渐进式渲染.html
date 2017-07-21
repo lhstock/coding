@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>
+
+	</title>
+	<script src='../library/vue/Vue.js'></script>
+</head>
+<body>
+<div id="a">{{message}}</div>
+<div id="b">{{content}}</div>
+<!-- <div class="a"> {{array}}</div>
+<div class="a"> {{array}}</div>
+<div class="a"> {{array}}</div> -->
+<div id="c" v-bind:class="class_">{{content}}
+</div>
+</body>
+<script>
+    /**
+     * 常规
+     */
+	var div = new Vue({
+		el:"#a",
+		data:{
+			message:"常规"
+		}
+	})
+
+    /**
+     * content 替代 message；
+     */
+    var div2 = new Vue({
+    	el:"#b",
+    	data:{
+    		content:"文本替换"
+    	}
+    })
+
+    /**
+     * data 以键值对的形式包含所有可替换数据；
+     */
+    var div3 = new Vue({
+    	el:"#c",
+    	data:{
+    		content:"内容三",
+    		class_:"class_bind"
+    	}
+    })
+    /**
+     * 声明渲染多个元素失败
+     */
+    // var div_arr = new Vue({
+    // 	el:".a",
+    // 	// "data":[
+    // 	// {
+    // 	// 	array:"数组——1"
+    // 	// },
+    // 	// 	{
+    // 	// 	array:"数组——2"
+    // 	// },
+    // 	// 	{
+    // 	// 	array:"数组——3"
+    // 	// }
+    // 	// ]
+    // 	"data":{
+    // 		"array":[
+    //             "数组_1",
+    //             "arr_2",
+    //             "arr_3"
+    // 		]
+    // 	}
+    // })
+</script>
+</html>
