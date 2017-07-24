@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+
+<head>
+	<meta charset="utf-8" />
+	<title>5. Longest Palindromic Substring</title>
+
+</head>
+
+<body>
+
+</body>
+<script>
+	/**
+	 * @param {string} s
+	 * @return {string}
+	 */
+	var longestPalindrome = function(s) {
+		var obj = {};
+		var i = 0;
+		var q = 0;
+		var e = 0;
+		var cu_max = 0;
+		var node;
+		var switchs = false;
+		while(i < s.length) {
+			if(i === 1000) {
+				break;
+			}
+			obj[s[i]] ? cunzai() : bucunzai();
+			function cunzai() {
+				var a = obj[s[i]].node;
+				if(!switchs) {
+					var arr = a[a.length - 1];
+					arr[1] = i;
+					var max = i - arr[0];
+					max >= cu_max && (cu_max = max, node = arr);
+					switchs = true
+				}
+				var newa = [i, 0];
+				newa.max = 1;
+				a.push(newa);
+
+			}
+
+			function bucunzai() {
+				var arr = [];
+				arr[0] = i;
+				arr[1] = 0;
+				arr.max = 1;
+				obj[s[i]] = {
+					node: [arr]
+				}
+
+			}
+			i++;
+		}
+		return s.slice(node[0],node[1]+1)
+	};
+	var s = "babad" //"cbbd"//"dcbbd";
+	var node = longestPalindrome(s);
+</script>
