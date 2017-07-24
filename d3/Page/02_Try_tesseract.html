@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>尝试超正方体(tesseract)</title>
+	<link rel="stylesheet" href="">
+	<script src="../library/d3.js"></script>
+	<script src="../library/jquery.min.js"></script>
+</head>
+<body>
+	
+</body>
+<script>
+	var svg = d3.select("body").append("svg")
+		.attr("width",700)
+		.attr("height",660)
+	var rect = d3.select("svg").append("rect")
+    .attr("x", 100)
+    .attr("y", 100)
+    .attr("width", 400)
+    .attr("height", 400)
+    .attr("fill", "blue")
+    .attr("opacity", 0.2)
+    .style("transform", "rotate3d(0.1,1,0,60deg)")
+    .attr({
+        "stroke": "black"
+    })
+var rect1 = d3.select("svg").append("rect")
+    .attr("x", 200)
+    .attr("y", 200)
+    .attr("width", 200)
+    .attr("height", 200)
+    .attr("fill", "green")
+    .attr("opacity", 0.2)
+    .style("transform", "rotate3d(0.1,1,0,60deg)")
+    .attr({
+        "stroke": "black"
+    })
+var rect2 = d3.select("svg").append("rect")
+    .attr("x", 400)
+    .attr("y", 200)
+    .attr("width", 200)
+    .attr("height", 200)
+    .attr("fill", "red")
+    .attr("opacity", 0.2)
+    .style("transform", "rotate3d(0.1,1,0,60deg)")
+    .attr({
+        "stroke": "black"
+    })
+var rect3 = d3.select("svg").append("rect")
+    .attr("x", 500)
+    .attr("y", 100)
+    .attr("width", 500)
+    .attr("height", 400)
+    .attr("fill", "white")
+    .attr("opacity", 0.2)
+    .style("transform", "rotate3d(0.1,1,0,60deg)")
+    .attr({
+        "stroke": "black"
+    })
+</script>
+</html>

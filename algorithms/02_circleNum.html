@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+</head>
+<body>
+	
+</body>
+<script>
+	function circleNum(n) {
+    var arr = new Array(n);
+    for (var i = 0; i < arr.length; i++) {
+        arr[i] = new Array(n);
+    };
+    //
+    var length = n * n;
+    var cell = range_(length)
+    console.log(cell)
+    var c = {
+        "index": 1,
+        "direction": -1
+    }
+    var r = {
+        "index": 1,
+        "direction": -1
+    }
+    var step = n - 1;
+    var jo = 0;
+    var i = 1;
+    var _ = 0;
+    var direction = {
+        0: function() {
+            c["direction"] = -Math.abs(c["direction"])
+            return c
+        },
+        1: function() {
+            r["direction"] = -Math.abs(r["direction"])
+            return r
+        },
+        2: function() {
+            c["direction"] = Math.abs(c["direction"])
+            return c
+        },
+        3: function() {
+            r["direction"] = Math.abs(r["direction"])
+            return r
+        }
+    }
+
+    var cishu = 0;
+
+    while (i <= cell.length) {
+
+        arr[r["index"] - 1][c["index"] - 1] = cell[i - 1];
+
+        var step_num = Math.floor((i - 1) / ((n - 1) * 3)) == 0 ? 3 : 2;
+
+        if (i - jo <= step) {
+
+            var s = direction[_ % 4]();
+
+            
+            s["index"] = s["index"] - s["direction"]
+
+            if (i - jo == step) {
+
+                _++;
+
+                jo = i;
+
+                cishu++;
+
+                if (cishu == step_num) {
+
+                    step--;
+                    cishu = 0
+                }
+            }
+        }
+
+        i++
+    }
+
+    function range_(start, stop, step) {
+        if (arguments.length < 3) {
+            step = 1;
+            if (arguments.length < 2) {
+                stop = start;
+                start = 0;
+            }
+        }
+        if ((stop - start) / step === Infinity) throw new Error("infinite range");
+        var range = [],
+            k = range_integerScale(Math.abs(step)),
+            i = -1,
+            j;
+        start *= k, stop *= k, step *= k;
+        if (step < 0)
+            while ((j = start + step * ++i) > stop) range.push(range_interger_10(j / k));
+        else
+            while ((j = start + step * ++i) < stop) range.push(range_interger_10(j / k));
+        return range;
+    };
+
+    function range_integerScale(x) {
+        var k = 1;
+        while (x * k % 1) k *= 10;
+        return k;
+    }
+
+    function range_interger_10(a) {
+        a = a >= 10 ? range_interger_10(a % 10) : a;
+        return a;
+    }
+    for (var ii = 0; ii < n; ii++) {
+    	console.log(arr[ii])
+    }
+    return arr;
+}
+</script>
+</html>
