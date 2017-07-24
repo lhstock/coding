@@ -9,3 +9,5 @@
 > 尝试超正方体,暂未成功
 
 >>v4
+- 01_decomposition_svg_on_div.html
+> 看了一个国外的新思路；把chart的各部分分解到不同的div中；
