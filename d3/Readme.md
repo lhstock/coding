@@ -11,6 +11,9 @@
 - 03_sort_dom
 > 对dom排序避免元素覆盖的demo；
 
+- 04_regular_icosahedron.html
+> 正二十面体；平面实现；但是布置backgroundImg后层次感有欠缺；
+
 >>v4
 - 01_decomposition_svg_on_div.html
 > 看了一个国外的新思路；把chart的各部分分解到不同的div中；

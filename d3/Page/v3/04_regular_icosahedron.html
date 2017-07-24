@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+.point {
+  fill: #000;
+  stroke: #fff;
+}
+
+.edge {
+  fill: none;
+  stroke: #000;
+  stroke-opacity: .4;
+}
+
+/*.face {
+  fill: #eee;
+  fill-rule: nonzero;
+}*/
+
+</style>
+<body>
+<script src="../../library/d3.js"></script>
+<script>
+
+var width = 960,
+    height = 500;
+
+var velocity = [.04, .01];
+
+var projection = d3.geo.orthographic()
+    .scale(200);
+
+var path = d3.geo.path()
+    .projection({
+      stream: function(out) {
+        return {
+          point: function(x, y) { var p = projection([x, y]); out.point(p[0], p[1]); },
+          lineStart: function() { out.lineStart(); },
+          lineEnd: function() { out.lineEnd(); },
+          polygonStart: function() { out.polygonStart(); },
+          polygonEnd: function() { out.polygonEnd(); }
+        };
+      }
+    });
+
+var svg = d3.select("body").append("svg")
+    .attr("width", width)
+    .attr("height", height);
+var img_src = d3.range(16);
+var root = "../../img/lcosahedron/m"
+img_src.forEach(function (d,i) {
+	console.log(root + d);
+    img_src[i] = root + d + ".jpg";
+})
+
+//<defs xmlns="http://www.w3.org/2000/svg">
+//      <pattern id="img1" patternUnits="userSpaceOnUse" width="600" height="450">
+//          <image xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="daisy-grass-repeating-background.jpg" x="0" y="0" width="600" height="450"></image><!-- Image from http://silviahartmann.com/background-tile/6-grass-meadow-tile.php-->
+//      </pattern>
+//<pattern xmlns="http://www.w3.org/2000/svg" id="img2" patternUnits="userSpaceOnUse" width="600" height="450">
+//          <image xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="daisy-grass-repeating-background.jpg" x="0" y="0" width="600" height="450"></image><!-- Image from http://silviahartmann.com/background-tile/6-grass-meadow-tile.php-->
+//      </pattern>
+//  </defs>
+// d3.ns.prefix.myns = "http://www.example.com/whatever/";
+// d3.ns.prefix.xlink = "http://www.w3.org/1999/xlink";
+var path_img = svg
+	.append("defs")
+//	.attr("xmlns","http://www.w3.org/2000/svg")
+//	.attr('myns:someAttribute', 'some value')
+	.selectAll(".path-img")
+	.data(img_src)
+	.enter()
+	.append("pattern")
+	.attr("class","path-img")
+	.attr("id",function (d,i) {
+	    return "pathimg" + i;
+	})
+	.attr({
+		"width":100,
+		"height":100,
+		"patternUnits":"userSpaceOnUse"
+	})
+//	.attr('xlink:someAttribute','some value')
+//	.xmlns({
+//		"xlink":"http://www.w3.org/1999/xlink" ,
+//		"href":"daisy-grass-repeating-background.jpg"
+//	})
+//	.attr({
+//		"xmlns:xlink":"http://www.w3.org/1999/xlink" ,
+//		"xlink:href":"daisy-grass-repeating-background.jpg"
+//	})
+	.append("image")
+	.attr({
+		"href":function (d) {
+		    return d
+		},
+		"width":100,
+		"height":100,
+		"x":0,
+		"y":0
+//		,
+		
+	})
+	.attr("href",function (d) {
+		    return d
+		})
+	svg.append("path")
+	.attr("d","M0,0              l0,300 l300,300 l300,0 l0,0z")
+	.attr("fill","url(#pathimg0)")
+//	.style("transform", "rotate3d(0,1,1,45deg)")
+//console.log(d3.selectAll("image").style("transform","rotate3d(1,1,1,45deg)"));
+var face = svg.selectAll(".face")
+    .data(icosahedron_faces)
+  .enter().append("path")
+    .attr("class", "face")
+    .attr("fill",function (d,i) {
+//	console.log("url(#path-img"+(i)+")");
+console.log(i);
+      return i <= 20 ? "url(#pathimg"+(i)+")" : "#eee";
+//    transform:translate("+(s)+","");
+  })
+  .style("fill-opacity",1);
+
+var edge = svg.append("path")
+    .datum(icosahedron_edges)
+    .attr("class", "edge");
+
+var point = svg.append("path")
+    .datum(icosahedron_points)
+    .attr("class", "point");
+//projection.rotate([0.1 * velocity[0], 0.1 * velocity[1]]);
+//face.attr("d", path);
+var ss = true;
+d3.timer(function(elapsed) {
+if (ss) {
+//	console.log(d3.selectAll("image"));
+    projection.rotate([elapsed * velocity[0], elapsed * velocity[1]]);
+//  d3.selectAll("image").style("tranform","rotateY("+ elapsed * velocity[0] +" ,edg)")
+point.attr("d", path);
+//edge.attr("d", path);
+face.attr("d", path)
+
+}
+d3.select("path").attr("fill","url(#pathimg0)")
+});
+
+function icosahedron_points() {
+  var points = [],
+      y = Math.atan2(1, 2) * 180 / Math.PI;
+  points.push([0, -90]);
+  for (var x = 0; x < 360; x += 36) {
+//	console.log([x,-y],[x += 36 , y]);
+var arr = [[x, -y], [x += 36, y]]
+
+    points.push(arr[0],arr[1]);
+  }
+  points.push([0, 90]);
+
+  return {type: "MultiPoint", coordinates: points};
+}
+
+function icosahedron_edges() {
+  var edges = [],
+      y = Math.atan2(1, 2) * 180 / Math.PI;
+  for (var x = 0; x < 360; x += 72) {
+    edges.push([[x +  0, -90], [x +  0,  -y]]);
+    edges.push([[x +  0,  -y], [x + 72,  -y]]);
+    edges.push([[x + 36,   y], [x - 36,   y]]);
+    edges.push([[x + 36,   y], [x +  0,  -y]]);
+    edges.push([[x - 36,   y], [x +  0,  -y]]);
+    edges.push([[x + 36,  90], [x + 36,   y]]);
+  }
+  return {type: "MultiLineString", coordinates: edges};
+}
+
+function icosahedron_faces() {
+  var faces = [],
+      y = Math.atan2(1, 2) * 180 / Math.PI;
+  for (var x = 0; x < 360; x += 72) {
+    faces.push([[[x +  0, -90], [x +  0,  -y], [x + 72,  -y], [x +  0, -90]]]);
+    faces.push([[[x +  0,  -y], [x + 72,  -y], [x + 36,   y], [x +  0,  -y]]]);
+    faces.push([[[x + 36,   y], [x +  0,  -y], [x - 36,   y], [x + 36,   y]]]);
+    faces.push([[[x - 36,  90], [x - 36,   y], [x + 36,   y], [x + 36,  90]]]);
+  }
+  return faces.map(function(face) {
+    return {type: "Polygon", coordinates: face};
+  });
+}
+
+</script>
