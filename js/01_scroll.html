@@ -1,0 +1,41 @@
+<html>
+<head>
+<meta charset="utf-8">
+<!--<script type="text/javascript" src="/jquery/jquery.js"></script>-->
+<script src="library/jquery.min.js"></script>
+<script type="text/javascript">
+x=0;
+$(document).ready(function(){
+//$("div").scroll(function() {
+//  $("span").text(x+=1);
+//});
+
+//$("div").on("scroll",function(){
+//	$("span").text(x+=1);
+//})//de(scrollToList(),1000)
+//$("div").on("scroll",de(scrollToList,1000))//de(scrollToList(),1000)
+$("div").on("scroll",de(scrollToList,2000))//de(scrollToList(),1000)
+function de(something,delay){    
+    var fun;    
+    return function(){     
+    	console.log(fun);
+        if(fun) clearTimeout(fun);
+        fun = setTimeout(function(){            
+            something();
+        },delay);
+    }
+}
+function scrollToList(){
+console.log("+++++++++");
+}
+});
+</script>
+</head>
+<body>
+<p>请试着滚动 DIV 中的文本：</p>
+<div style="width:200px;height:100px;overflow:scroll;">text. text. text. text. text. text. text. text. text. text. text. text. text. text. text. text. text. text. text. text. text. text. 
+<br /><br />
+text. text. text. text. text. text. text. text. text. text. text. text. text. text. text. text. text. text. text. text. text. text. text. text. text. text. text. text. text. text. text. text. text.</div>
+<p>滚动了 <span>0</span> 次。</p>
+</body>
+</html>
