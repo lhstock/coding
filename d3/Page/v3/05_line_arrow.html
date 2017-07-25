@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>line_</title>
+    <!-- <script src="../../js/开源js/d3.js"></script> -->
+    <script src="../../library/d3.js"></script>
+</head>
+
+<body>
+</body>
+<script>
+d3.json("../../json/route.json",function(error,json) {
+var width = 600;
+var height = 600;
+var svg = d3.select("body")
+    .append("svg")
+    .attr({
+        "width": width,
+        "height": height
+    })
+    // .attr("viewBox","0 0 20 20")
+svg.append("defs")
+    .append("marker")
+    .attr({
+        "id": "arrow",
+        "markerUnits": "strokeWidth",
+        "viewBox": "0 -4 10 10",
+        "refX": 0,
+        "refY": 0,
+        "orient": "auto"
+
+    })
+    .append("path")
+    .attr("d", "M0,-1.5L1,0L0,1.5")
+    .attr("fill", "none")
+    .attr("stroke","white")
+    .attr('stroke-width',".5px")
+
+
+
+
+// var data = [
+//     [50, 50],
+//     [100, 50],
+//     [150, 100]
+// ];
+// var data = [];
+// var a = d3.range(20);
+// for (var i = 0; i < a.length; i++) {
+//     var b = Math.random()* 500;
+//     var c = Math.random()* 500;
+//     data.push([b,c]);
+// }
+var data = [];
+function Recursive(json) {
+    if (json.path == null) {
+        return;
+    } else {
+        var arr = [];
+        arr[0] = json.x_coor;
+        arr[1] = json.y_coor;
+        arr.distanceToNext = json.distanceToNext;
+        data.push(arr)
+        Recursive(json.path)
+    }
+}
+Recursive(json)
+var scale = d3.scale.linear()
+.domain([0,20])
+.range([0,600])
+var line = d3.svg.line()
+    .interpolate("basis")
+    .x(function(d) {
+        return scale(d[0])
+    })
+    .y(function(d) {
+        return scale(d[1])
+    })
+
+var path = svg.selectAll(".path").data([line(data)])
+    .enter()
+    .append("path")
+    .attr("class","path")
+    .attr("d", function(d) {
+        return d
+    })
+    .style({
+        "stroke": "#00bcd4",
+        "stroke-width": "1em",
+        "fill": "none"
+    })
+    .attr("marker-mid",function(d) {
+        console.log(d)
+        return "url(#arrow)";
+    })
+
+})
+// var length = path.node().getTotalLength();
+// var text = svg.append("text")
+// .attr("x",50)
+// .attr("y",height-30)
+// .style("font-size","1.5em")
+// .text(length)
+</script>
+
+</html>

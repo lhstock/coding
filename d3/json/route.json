@@ -1,0 +1,82 @@
+{
+  "id" : -4,
+  "map_id" : null,
+  "x_coor" : 11.0,
+  "y_coor" : 3.0,
+  "comment" : null,
+  "known" : true,
+  "path" : {
+    "id" : -3,
+    "map_id" : null,
+    "x_coor" : 10.310344827586206,
+    "y_coor" : 3.2758620689655173,
+    "comment" : null,
+    "known" : true,
+    "path" : {
+      "id" : 1,
+      "map_id" : 1,
+      "x_coor" : 11.0,
+      "y_coor" : 5.0,
+      "comment" : "DOOR",
+      "known" : true,
+      "path" : {
+        "id" : 2,
+        "map_id" : 1,
+        "x_coor" : 10.0,
+        "y_coor" : 5.0,
+        "comment" : "ROW1C",
+        "known" : true,
+        "path" : {
+          "id" : 5,
+          "map_id" : 1,
+          "x_coor" : 7.5,
+          "y_coor" : 5.0,
+          "comment" : "ROW2C",
+          "known" : true,
+          "path" : {
+            "id" : 8,
+            "map_id" : 1,
+            "x_coor" : 5.0,
+            "y_coor" : 5.0,
+            "comment" : "ROW3C",
+            "known" : true,
+            "path" : {
+              "id" : 11,
+              "map_id" : 1,
+              "x_coor" : 2.0,
+              "y_coor" : 5.0,
+              "comment" : "ROW4C",
+              "known" : true,
+              "path" : {
+                "id" : -1,
+                "map_id" : null,
+                "x_coor" : 2.0,
+                "y_coor" : 2.5,
+                "comment" : null,
+                "known" : true,
+                "path" : {
+                  "id" : -2,
+                  "map_id" : null,
+                  "x_coor" : 1.0,
+                  "y_coor" : 2.0,
+                  "comment" : null,
+                  "known" : true,
+                  "path" : null,
+                  "distanceToNext" : 0.0
+                },
+                "distanceToNext" : 1.118033988749895
+              },
+              "distanceToNext" : 3.618033988749895
+            },
+            "distanceToNext" : 6.618033988749895
+          },
+          "distanceToNext" : 9.118033988749895
+        },
+        "distanceToNext" : 11.618033988749895
+      },
+      "distanceToNext" : 12.618033988749895
+    },
+    "distanceToNext" : 14.474987370520413
+  },
+  "distanceToNext" : 15.217768723228621
+}
