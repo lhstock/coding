@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>flex</title>
+    <!-- <link rel="stylesheet" href=""> -->
+    <style>
+        .container {
+            display: flex;
+            display: -webkit-flex;
+            width: 100%;
+            height: 48px;
+            background: red;
+        }
+        
+        .item1 {
+            flex: 1 0 auto;
+            background: orange;
+            margin-left: 10px;
+        }
+        
+        .item2 {
+            flex: 1 0 auto;
+            background: yellow;
+            margin-left: 10px;
+        }
+        
+        .item3 {
+            flex: 0 0 auto;
+            background: green;
+            width: 48px;
+            height: 48px;
+        }
+        /* div {} */
+        
+        .face-container span {
+            display: block;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            margin: 4px;
+            background-color: #333;
+            box-shadow: inset 0 3px #111, inset 0 -3px #555;
+        }
+        
+        .face-container div {
+            width: 100px;
+            height: 100px;
+            /* margin: 10px; */
+            background: #fff;
+        }
+        
+        .Face {
+            margin: 0;
+        }
+        
+        .face-container {
+            display: flex;
+            flex-wrap: wrap;
+            background: #ff9;
+        }
+        
+        .face-1 {
+            display: flex;
+            /* flex-direction: row-reverse; */
+            /* 水平位置 */
+            justify-content: center;
+            /* 垂直位置 */
+            align-items: center;
+        }
+        
+        .face-2 {
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .face-2 span:nth-of-type(2) {
+            align-self: flex-end;
+        }
+        
+        .face-3 {
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .face-3 span:nth-of-type(2) {
+            align-self: center;
+        }
+        
+        .face-3 span:nth-of-type(3) {
+            align-self: flex-end;
+        }
+        
+        .face-4 {
+            display: flex;
+            justify-content: space-between;
+            /* flex-wrap: wrap; */
+        }
+        
+        .l {
+            display: flex;
+            flex-flow: column-reverse wrap;
+            justify-content: space-between;
+            /* justify-content: center; */
+            /* margin: 0; */
+            /* align-content: center; */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="item1">
+
+        </div>
+        <div class="item2">
+
+        </div>
+        <div class="item3">
+
+        </div>
+    </div>
+    <div class="Face face-container">
+        <div class="Face face-1">
+            <span></span>
+        </div>
+        <div class="Face face-2">
+            <span></span>
+            <span></span>
+        </div>
+        <div class="Face face-3">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="Face face-4">
+            <div class="l">
+                <span></span>
+                <span></span>
+
+            </div>
+            <div class="l">
+                <span></span>
+                <span></span>
+
+            </div>
+        </div>
+        <div class="Face face-5">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="Face face-6">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="Face face-7">
+            <span></span>
+        </div>
+        <div class="Face face-9">
+            <span></span>
+        </div>
+        <div class="Face face-10">
+            <span></span>
+        </div>
+        <div class="Face face-11">
+            <span></span>
+        </div>
+        <div class="Face face-12">
+            <span></span>
+        </div>
+        <div class="Face face-13">
+            <span></span>
+        </div>
+        <div class="Face face-14">
+            <span></span>
+        </div>
+        <div class="Face face-15">
+            <span></span>
+        </div>
+        <div class="Face face-16">
+            <span></span>
+        </div>
+        <div class="Face face-17">
+            <span></span>
+        </div>
+        <div class="Face face-18">
+            <span></span>
+        </div>
+        <div class="Face face-19">
+            <span></span>
+        </div>
+        <div class="Face face-20">
+            <span></span>
+        </div>
+        <div class="Face face-21">
+            <span></span>
+        </div>
+        <div class="Face face-22">
+            <span></span>
+        </div>
+        <div class="Face face-23">
+            <span></span>
+        </div>
+        <div class="Face face-24">
+            <span></span>
+        </div>
+        <div class="Face face-25">
+            <span></span>
+        </div>
+        <div class="Face face-26">
+            <span></span>
+        </div>
+    </div>
+</body>
+
+</html>
