@@ -33,9 +33,11 @@
             width: 48px;
             height: 48px;
         }
-        /* div {} */
+        /* div {
+            
+        } */
         
-        .face-container span {
+        .f-container span {
             display: block;
             width: 24px;
             height: 24px;
@@ -44,19 +46,20 @@
             background-color: #333;
             box-shadow: inset 0 3px #111, inset 0 -3px #555;
         }
-        
-        .face-container div {
+        /* .f-container div {
             width: 100px;
             height: 100px;
-            /* margin: 10px; */
-            background: #fff;
+             margin: 10px; 
+        
+        background: #fff;
+    }
+    */
+        
+        . {
+            margin: 3px;
         }
         
-        .Face {
-            margin: 0;
-        }
-        
-        .face-container {
+        .f-container {
             display: flex;
             flex-wrap: wrap;
             background: #ff9;
@@ -101,11 +104,24 @@
         
         .l {
             display: flex;
-            flex-flow: column-reverse wrap;
+            /* flex-flow: column-reverse wrap; */
+            flex-direction: column;
             justify-content: space-between;
             /* justify-content: center; */
             /* margin: 0; */
             /* align-content: center; */
+        }
+        
+        [class^="face"] {
+            margin: 16px;
+            padding: 4px;
+            background-color: #e7e7e7;
+            /* background: red; */
+            width: 104px;
+            height: 104px;
+            object-fit: contain;
+            box-shadow: inset 0 5px white, inset 0 -5px #bbb, inset 5px 0 #d7d7d7, inset -5px 0 #d7d7d7;
+            border-radius: 10%;
         }
     </style>
 </head>
@@ -122,20 +138,20 @@
 
         </div>
     </div>
-    <div class="Face face-container">
-        <div class="Face face-1">
+    <div class="f-container">
+        <div class="face-1">
             <span></span>
         </div>
-        <div class="Face face-2">
-            <span></span>
-            <span></span>
-        </div>
-        <div class="Face face-3">
-            <span></span>
+        <div class="face-2">
             <span></span>
             <span></span>
         </div>
-        <div class="Face face-4">
+        <div class="face-3">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="face-4">
             <div class="l">
                 <span></span>
                 <span></span>
@@ -147,14 +163,14 @@
 
             </div>
         </div>
-        <div class="Face face-5">
+        <div class="face-5">
             <span></span>
             <span></span>
             <span></span>
             <span></span>
             <span></span>
         </div>
-        <div class="Face face-6">
+        <div class="face-6">
             <span></span>
             <span></span>
             <span></span>
@@ -162,61 +178,61 @@
             <span></span>
             <span></span>
         </div>
-        <div class="Face face-7">
+        <div class="face-7">
             <span></span>
         </div>
-        <div class="Face face-9">
+        <div class="face-9">
             <span></span>
         </div>
-        <div class="Face face-10">
+        <div class="face-10">
             <span></span>
         </div>
-        <div class="Face face-11">
+        <div class="face-11">
             <span></span>
         </div>
-        <div class="Face face-12">
+        <div class="face-12">
             <span></span>
         </div>
-        <div class="Face face-13">
+        <div class="face-13">
             <span></span>
         </div>
-        <div class="Face face-14">
+        <div class="face-14">
             <span></span>
         </div>
-        <div class="Face face-15">
+        <div class="face-15">
             <span></span>
         </div>
-        <div class="Face face-16">
+        <div class="face-16">
             <span></span>
         </div>
-        <div class="Face face-17">
+        <div class="face-17">
             <span></span>
         </div>
-        <div class="Face face-18">
+        <div class="face-18">
             <span></span>
         </div>
-        <div class="Face face-19">
+        <div class="face-19">
             <span></span>
         </div>
-        <div class="Face face-20">
+        <div class="face-20">
             <span></span>
         </div>
-        <div class="Face face-21">
+        <div class="face-21">
             <span></span>
         </div>
-        <div class="Face face-22">
+        <div class="face-22">
             <span></span>
         </div>
-        <div class="Face face-23">
+        <div class="face-23">
             <span></span>
         </div>
-        <div class="Face face-24">
+        <div class="face-24">
             <span></span>
         </div>
-        <div class="Face face-25">
+        <div class="face-25">
             <span></span>
         </div>
-        <div class="Face face-26">
+        <div class="face-26">
             <span></span>
         </div>
     </div>
