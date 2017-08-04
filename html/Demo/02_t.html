@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>header</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    var obj = {
+        quantity: 4300,
+        startDate: '2017-8-2'
+    }
+
+    function deposit(opacitys) {
+        var _ = {};
+        // 存款
+        _.quantity = opacitys.quantity;
+        // 开始记录日期
+        _.startDate = opacitys.startDate;
+        _.plans = [];
+        // 计划 
+        _.Plan = function(plan) {
+            _.plans.push(plan)
+            return _;
+        }
+        _.Inquire = function(date) {
+            var inquire_date = new Date(date);
+            var unix = new Date(date) - new Date(_.startDate);
+            if (unix > 0) {
+                _.for_num = unix / 1000 / 3600 / 24;
+            }
+            for (var i = 1; i <= _.for_num; i++) {
+                console.log(getDateforTimestamp(i))
+            }
+            return _;
+        }
+
+        function getDateforTimestamp(form) {
+            DaysToAdd = form; //document.form.DaysToAdd.value;
+            var now = new Date(_.startDate);
+            var newdate = new Date(_.startDate);
+            var newtimems = newdate.getTime() + (DaysToAdd * 24 * 60 * 60 * 1000);
+            newdate.setTime(newtimems);
+            return newdate.getDate()
+        }
+        return _;
+    }
+    var deposit = new deposit(obj);
+    deposit.Plan({
+        type: 0,
+        isPay: 1,
+        date: '2017-8-6',
+        amount: 300,
+        des: '水电费'
+    });
+    deposit.Plan({
+        type: 0,
+        isPay: 0,
+        date: '2017-8-15',
+        amount: 7000,
+        des: '工资'
+    });
+    deposit.Plan({
+        type: 1,
+        margin: 2,
+        isPay: 1,
+        date: '2017-8-6',
+        amount: 3000,
+        des: '房租'
+    })
+    console.log(deposit)
+</script>
+
+</html>
