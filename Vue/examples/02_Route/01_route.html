@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ch">
+
+<head>
+    <title>route</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link href="css/style.css" rel="stylesheet"> -->
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+    <style>
+        .router-link-active {
+            color: aqua
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <p>
+            <router-link to='/one'> Go one </router-link>
+            <router-link to='/two'>Go two</router-link>
+        </p>
+        <router-view></router-view>
+
+    </div>
+</body>
+<script>
+    var one = {
+        template: '<div>one</div>'
+    }
+    var two = {
+        template: '<div>two</div>'
+    }
+
+    var routes = [{
+        path: '/one',
+        component: one
+    }, {
+        path: '/two',
+        component: two
+    }];
+    var router = new VueRouter({
+        routes
+    })
+    var app = new Vue({
+        router
+    }).$mount("#app");
+    // const Foo = {
+    //     template: '<div>foo</div>'
+    // }
+    // const Bar = {
+    //     template: '<div>bar</div>'
+    // }
+    // const routes = [{
+    //     path: '/foo',
+    //     component: Foo
+    // }, {
+    //     path: '/bar',
+    //     component: Bar
+    // }]
+    // const router = new VueRouter({
+    //     routes
+    // })
+    // const app = new Vue({
+    //     router
+    // }).$mount('#app')
+</script>
+
+</html>
