@@ -5,12 +5,64 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>header</title>
+    <script src="../../d3/library/d3.js"></script>
+    <style>
+        #date_day {
+            display: flex;
+            flex-wrap: wrap;
+        }
+    </style>
 </head>
 
 <body>
-
+    <div id="a">
+        <div id="date_section">
+            <div id="date_title"></div>
+            <div id="date_day" width="700px" height="500px"></div>
+        </div>
+        <div id="des"></div>
+    </div>
 </body>
 <script>
+    title_("2017年8月")
+
+    function title_(t) {
+        var title = d3.select('#date_title').selectAll("p").data(['only'])
+        title.enter().append('p')
+            .html(t)
+        title.html(t);
+        title.exit().remove()
+    }
+    var arr_day = [
+        [31, 1, 2, 3, 4, 5, 6],
+        [7, 8, 9, 10, 11, 12, 13],
+        [14, 15, 16, 17, 18, 19, 20],
+        [21, 22, 23, 24, 25, 26, 27],
+        [28, 29, 30, 31, 1, 2, 3]
+    ]
+    date_day_(arr_day)
+
+    function date_day_(arr) {
+        var div = d3.select("#date_day");
+        div.style({
+            width: "700px",
+            height: arr.length * 100 + "px"
+        });
+
+        var day = div.selectAll('.days').data(d3.merge(arr));
+        day.enter()
+            .append("div")
+            .attr("class", "days")
+            .style({
+                "width": "100px",
+                "height": "100px"
+            });
+        day.html(function(d) {
+            return d;
+        });
+        day.exit().remove();
+        // var text = day.selectAll("p")
+    }
     var obj = {
         quantity: 4300,
         startDate: '2017-8-2'
