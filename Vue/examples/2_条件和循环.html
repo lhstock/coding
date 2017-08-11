@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ch">
+
+<head>
+    <title>条件和循环</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link href="css/style.css" rel="stylesheet"> -->
+    <script src="../library/vue/Vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <p v-if="isShow">控制显示</p>
+    </div>
+    <div id="app1">
+        <p v-for="sub in arr">
+            {{sub.name}}
+        </p>
+    </div>
+</body>
+
+<script>
+    new Vue({
+        el: "#app",
+        data: {
+            "isShow": false
+        }
+    })
+    new Vue({
+        el: "#app1",
+        data: {
+            arr: [{
+                name: "a"
+            }, {
+                name: "b"
+            }]
+        }
+    })
+</script>
+
+</html>

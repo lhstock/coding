@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ch">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link href="css/style.css" rel="stylesheet"> -->
+    <script src="../library/vue/Vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <p>{{content}}</p>
+        <button v-on:click="c">添加</button>
+    </div>
+    <div id="app1">
+        <p>{{title}}</p>
+        <input v-model="title">
+    </div>
+</body>
+<script>
+    new Vue({
+        el: "#app",
+        data: {
+            content: "shuodianshenmeba!"
+        },
+        methods: {
+            c: function() {
+                this.content = this.content + "!!!!!!!!!!!!!!!!"
+            }
+        }
+    })
+    new Vue({
+        el: "#app1",
+        data: {
+            title: 'titles'
+        }
+    })
+</script>
+
+</html>

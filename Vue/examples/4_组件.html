@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ch">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link href="css/style.css" rel="stylesheet"> -->
+    <script src="../library/vue/Vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+
+        <ol>
+            <todo-item v-for='item in arr' v-bind:todo="item" v-bind:key="item.id"> </todo-item>
+        </ol>
+    </div>
+</body>
+<script>
+    Vue.component('todo-item', {
+        props: ['todo'],
+        template: '<li> {{todo.text}}</li>'
+    })
+    new Vue({
+        el: "#app",
+        data: {
+            arr: [{
+                id: 11,
+                text: "zheshi"
+            }, {
+                id: 22,
+                text: "水晶坊"
+            }, {
+                id: 32,
+                text: "世界点卡"
+            }]
+        }
+    })
+</script>
+
+</html>
